@@ -121,7 +121,7 @@ function addNewProduct() {
         $bdd = dbConnect();
         $req = $bdd->prepare($sql);
         $req->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
-        $req->bindValue(':category_id', $_POST['category_id'], PDO::PARAM_INT);
+        $req->bindValue(':category_id', $_POST['category'], PDO::PARAM_STR);
         $req->bindValue(':quantity', $_POST['quantity'], PDO::PARAM_INT);
         $req->bindValue(':unit_price', $_POST['unit_price'], PDO::PARAM_INT);
 
@@ -145,7 +145,7 @@ function updateProduct($id) {
         $bdd = dbConnect();
         $req = $bdd->prepare($sql);
         $req->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
-        $req->bindValue(':category_id', $_POST['category_id'], PDO::PARAM_INT);
+        $req->bindValue(':category_id', $_POST['category'], PDO::PARAM_INT);
         $req->bindValue(':quantity', $_POST['quantity'], PDO::PARAM_INT);
         $req->bindValue(':unit_price', $_POST['unit_price'], PDO::PARAM_STR);
         $req->bindValue(':id', $id, PDO::PARAM_INT);
