@@ -57,7 +57,7 @@ CREATE TABLE `products` (
   `name` text NOT NULL,
   `category_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `unit_price` double NOT NULL
+  `unit_price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -107,7 +107,7 @@ INSERT INTO `user_statut` (`id`, `nom`) VALUES
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` int(3) NOT NULL AUTO_INCREMENT,
   `id_user` int(3) DEFAULT NULL,
-  `montant` int(3) NOT NULL,
+  `montant` float(6) NOT NULL,
   `date_enregistrement` date NOT NULL,
   `etat` enum('en cours de traitement','envoyé','livré') NOT NULL,
   PRIMARY KEY (`id_commande`)
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `details_commande` (
   `id_produit` int(3) DEFAULT NULL,
   `designation` varchar(250) NOT NULL,
   `quantite` int(3) NOT NULL,
-  `prix` int(3) NOT NULL,
+  `prix` float(6) NOT NULL,
   PRIMARY KEY (`id_details_commande`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 

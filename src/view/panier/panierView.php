@@ -52,7 +52,7 @@ ob_start();
                                     <input id='input' type=\"hidden\" size=\"1\" name=\"id[]\" value=\"" . htmlspecialchars($_SESSION['panier']['id_produit'][$i]) . "\"/>
                                     <a  href='?action=augmenter&q={$_SESSION['panier']['qteProduit'][$i]}&l={$_SESSION['panier']['libelleProduit'][$i]}'><button id='le_plus' class='btn btn-primary'>+</button></a></td>";
                             echo "<td>" . htmlspecialchars($_SESSION['panier']['prixProduit'][$i]) . '€' . "</td>";
-                            echo "<td>" . htmlspecialchars($_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i]) . '€' . "</td>";
+                            echo "<td>" . number_format(round(htmlspecialchars($_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i]),2), 2, '.', '') . '€' . "</td>";
                             echo "<td><a href=\"" . htmlspecialchars("?action=suppression&l=" . rawurlencode($_SESSION['panier']['libelleProduit'][$i])) . "\"><button class='btn btn-danger'>X</button></a></td>";
                             echo "</tr>";
                         }

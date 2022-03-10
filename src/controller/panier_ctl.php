@@ -11,10 +11,6 @@ function ajoutPanier(){
 
     require 'src/view/panier/panierView.php';
 
-
-//   header("location:  src/view/panier/panierView.php?action=ajout&l={$product->getName()}&q=1&p={$product->getUnit_price()}'") ;
-
-    // require 'src/view/panier/panier_view.php';
 }
 function panier(){
 

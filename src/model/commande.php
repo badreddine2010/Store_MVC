@@ -118,15 +118,7 @@ function executeRequete($req)
 	}
 	return $resultat;
 }
-function montantTotal()
-{
-   $total=0;
-   for($i = 0; $i < count($_SESSION['panier']['id_produit']); $i++) 
-   {
-      $total += $_SESSION['panier']['quantite'][$i] * $_SESSION['panier']['prix'][$i];
-   }
-   return round($total,2);
-}
+
 function retirerproduitDuPanier($id_produit_a_supprimer)
 {
 	$position_produit = array_search($id_produit_a_supprimer,  $_SESSION['panier']['id_produit']);

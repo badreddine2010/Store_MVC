@@ -18,7 +18,7 @@
 
    function deleteCategory($id) {
        // Demander au Model de réaliser la requête DELETE
-       $ret = deleteCategoryById($id);
+       $ret = deleteCategoryById(intval($id));
        showAllCategories();
    }
 

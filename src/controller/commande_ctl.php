@@ -2,14 +2,12 @@
 
 function validerCommande(){
 
-  
-
-   if (!isset($_SESSION)) {
-       session_start();
- }
+//    if (!isset($_SESSION)) {
+//        session_start();
+//  }
  require "src/model/commande.php";
-   @$valider=$_POST["valider"];
-   $date = new DateTime('Y');
+  //  @$valider=$_POST["valider"];
+  //  $date = new DateTime('Y');
  
    for($i=0 ;$i < count($_SESSION['panier']['id_produit']) ; $i++) 
    {
@@ -20,11 +18,11 @@ function validerCommande(){
      $produit = $req->fetch();
      if($produit['quantity'] < $_SESSION['panier']['qteProduit'][$i])
      {
-       echo '<hr /><div class="alert alert-warning">Stock Restant: ' . $produit['quantity'] . '</div>';
+       echo '<div class="alert alert-warning">Stock Restant: ' . $produit['quantity'] . '</div>';
        echo '<div class="alert alert-warning">Quantité demandée: ' . $_SESSION['panier']['qteProduit'][$i] . '</div>';
        if($produit['quantity'] > 0)
        {
-         echo '<div class="alert alert-warning">la quantité de produit ' . $_SESSION['panier']['id_produit'][$i] . ' a été réduite car notre stock était insuffisant, veuillez vérifier vos achats.</div>';
+         echo '<div class="alert alert-warning">la quantité du produit <strong>' .strtoupper( $_SESSION['panier']['libelleProduit'][$i] ). '</strong> a été réduite car notre stock était insuffisant, veuillez vérifier vos achats.</div>';
          $_SESSION['panier']['qteProduit'][$i] = $produit['quantity'];
        }
        else
@@ -46,8 +44,8 @@ function validerCommande(){
  
      for($i = 0; $i < count($_SESSION['panier']['id_produit']); $i++)
      {
-             
-       $sql = ("INSERT INTO details_commande (id_commande, id_produit,designation, quantite, prix) VALUES ($id_commande, " . $_SESSION['panier']['id_produit'][$i] . ",'". $_SESSION['panier']['libelleProduit'][$i] . "'," . $_SESSION['panier']['qteProduit'][$i] . "," . $_SESSION['panier']['prixProduit'][$i] . ") ");
+       $montantTotal = htmlspecialchars($_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i]);
+       $sql = ("INSERT INTO details_commande (id_commande, id_produit,designation, quantite, prix) VALUES ($id_commande, " . $_SESSION['panier']['id_produit'][$i] . ",'". $_SESSION['panier']['libelleProduit'][$i] . "'," . $_SESSION['panier']['qteProduit'][$i] . "," .$montantTotal.") ");
        $bdd = dbConnect();
        $req = $bdd->exec($sql);
       //  $req->execute();
@@ -74,5 +72,6 @@ function showCommandes(){
 
 
 }
+
 
 

@@ -158,7 +158,7 @@ function creationPanier(){
     {
        $total += $_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i];
     }
-    return $total;
+    return number_format(round($total,2), 2, '.', '');
  }
  
  
@@ -193,3 +193,11 @@ function creationPanier(){
     return 0;
  
  }
+//  function montantTotal()
+// {
+//    $total=0;
+   
+//       $total = $_SESSION['panier']['qteProduit'] * $_SESSION['panier']['prixProduit'];
+   
+//    return round($total,2);
+// } 

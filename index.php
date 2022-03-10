@@ -20,13 +20,13 @@ function home()
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
-                <img src="images/beverages-g55d553b34_1280.jpg" class="d-block w-70 " alt="...">
+                <img src="images/beverages-g55d553b34_1280.jpg" class="d-block w-70 " width="1290" height="600" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="images/market-g6f3903d65_1280.jpg" class="d-block w-70" alt="...">
+                <img src="images/market-g6f3903d65_1280.jpg" class="d-block w-70" width="1290" height="600" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="images/tangerines-g0a650ccdc_1280.jpg" class="d-block w-70" alt="...">
+                <img src="images/tangerines-g0a650ccdc_1280.jpg" class="d-block w-70" width="1290" height="600" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
