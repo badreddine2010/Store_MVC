@@ -1,0 +1,19 @@
+{
+    "name": "bdjai/tp_store",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "AppStore\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Badreddine",
+            "email": "bdjaiz@hotmail.com"
+        }
+    ],
+    "require": {}
+}

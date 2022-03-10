@@ -1,0 +1,1 @@
+{"version":1,"defects":{"CategoryTest::testCanBeUsedAsString":4,"MathTest::testDouble":4,"MathTest::testIfZero":4},"times":{"CategoryTest::testCanBeUsedAsString":0.004,"MathTest::testDouble":0.005,"MathTest::testIfZero":0}}
