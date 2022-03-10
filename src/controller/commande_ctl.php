@@ -1,11 +1,11 @@
 <?php
 
+require "src/model/commande.php";
 function validerCommande(){
 
 //    if (!isset($_SESSION)) {
 //        session_start();
 //  }
- require "src/model/commande.php";
   //  @$valider=$_POST["valider"];
   //  $date = new DateTime('Y');
  
@@ -70,6 +70,20 @@ function detailsCommande(){
 function showCommandes(){
   require 'src/view/commande/commande_view.php';
 
+
+}
+
+function vCommande(){
+
+  $ret = updateCommande($_GET['id']);
+  require 'src/view/commande/commande_view.php';
+
+}
+
+function dCommande(){
+
+  $ret = deleteCommande($_GET['id']);
+  require 'src/view/commande/commande_view.php';
 
 }
 

@@ -36,6 +36,7 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 					<th>Date d'achat</th>
 					<th>Etat</tthh>
 					<th>Adresse mail</th>
+					<th>Action</th>
 					
 				</tr>
 			</thead> <?php
@@ -54,13 +55,20 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 		echo '<td>' .strftime('%d-%m-%Y',strtotime($commande['date_enregistrement'])).'</td>';
 		echo '<td>' . $commande['etat'] . '</td>';	
 		echo '<td>' . $commande['email'] . '</td>';
+		echo "<td><a class='btn btn-success' href='index.php?action=vCommande&id={$commande['id_commande']}'>Valider</a>
+		<a class='btn btn-danger' href='index.php?action=dCommande&id={$commande['id_commande']}'  OnClick='return(confirm(\"En êtes vous certain ?\"));'>supprimer</a></td>
+</td>";
 		echo '</tr>	';
 		echo '</div>';
 	}
 	echo '</table><br />';
-	echo 'Calcul du montant total des revenus:  <br />';
-		print "le chiffre d'affaires de la sociéte est de : $chiffre_affaire €"; 
-	
+
+	//Afficher le chiffre d'affaires
+	echo '<div class="alert alert-warning">';
+	echo '<strong>Calcul du montant total des revenus</strong>:  <br />';
+		print "<strong>le chiffre d'affaires de la sociéte est de : $chiffre_affaire €</strong>"; 
+	echo '</div>';
+
 	echo '<br />';
 	echo '<br />';
 	echo '<br />';

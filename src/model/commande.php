@@ -108,6 +108,40 @@ class membre{
         return $this;
     }
 }
+function updateCommande($id) {
+    $ret = false;
+    
+    $sql = "UPDATE commande SET etat = 'envoyé' WHERE id_commande = :id";
+
+    $bdd = dbConnect();
+    $req = $bdd->prepare($sql);
+    $req->bindValue(':id', $id, PDO::PARAM_INT);
+
+    $ret = $req->execute();
+
+    return $ret;
+}
+
+function deleteCommande($id) {
+    $ret = false;
+
+    $sql = "DELETE FROM commande";
+    $sql .= " WHERE id 
+    µ£_commande={$id}";
+
+    try {
+        $bdd = dbConnect();
+        $req = $bdd->query($sql);
+        $ret = $req->execute();
+    }
+    catch (PDOException $ex) {
+        var_dump("Erreur GET CATEGORY: {$ex->getMessage()}");
+    }
+    finally {
+        return $ret;
+    }
+}
+
 function executeRequete($req)
 {
 	global $mysqli; 

@@ -9,6 +9,7 @@ require "src/controller/user_ctl.php";
 require "src/controller/panier_ctl.php";
 require "src/controller/commande_ctl.php";
 require "src/controller/facture_ctl.php";
+require "src/controller/paiement_ctl.php";
 
 function home()
 {
@@ -139,17 +140,28 @@ if (isset($_GET['action'])) {
         case 'validerCommande':
             validerCommande();
             break;
-            case 'detailsCommande':
-                detailsCommande();
-                break;
-                case 'showCommandes':
-                    showCommandes();
-                    break;
+        case 'detailsCommande':
+            detailsCommande();
+            break;
+        case 'showCommandes':
+            showCommandes();
+            break;
+        case 'vCommande':
+            vCommande();
+            break;
+        case 'dCommande':
+            dCommande();
+            break;
 
             /* Actions pour la facture */
             /* ************************ */
         case 'facture':
             facture();
+            break;
+            /* Actions pour le paiement */
+            /* ************************ */
+        case 'paiement':
+            paiement();
             break;
 
         default:

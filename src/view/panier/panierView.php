@@ -68,8 +68,8 @@ ob_start();
                         echo "<th colspan=\"3\">";
                         echo "<a href='?action=viderPanier'><button class='btn btn-warning'>Vider le panier</button></a>";
                         if (isset($_SESSION['user'])){
-                            echo "<a href='?action=validerCommande'><button class='btn btn-success'>Valider votre commande</button></a>";
-                            // echo "<a href='src/view/commande/commande'><button class='btn btn-success'>Valider votre commande</button></a>";
+                            // echo "<a href='?action=validerCommande'><button class='btn btn-success'>Valider votre commande</button></a>";
+                            echo "<a href='?action=paiement'><button class='btn btn-success'>Valider votre commande</button></a>";
 
                         }else{
                             echo "<a href='?action=login'><button class='btn btn-primary'>Connectez-vous</button></a>";

@@ -28,7 +28,7 @@
     $pdf = new FPDF('P', 'mm', 'A4');
     $pdf->AddPage();
     
-    // $pdf->Image(RACINE_SITE.'ctrl/img/logo2.png',10,6,18);
+    $pdf->Image("images/Bitcoin.svg.png",10,6,18);
     $pdf->Ln(18);
     
     $pdf->SetFont('Arial','B',14);
