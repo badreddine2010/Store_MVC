@@ -48,7 +48,7 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 		$chiffre_affaire += $commande['montant'];
 		echo '<div>';
 		echo '<tr>';
-		echo '<td><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">Voir la commande ' . $commande['id_commande'] . '</a></td>';
+		echo '<td><a href="?action=detailsCommande&suivi=' . $commande['ref_commande'] . '">Voir la commande ' . $commande['id_commande'] . '</a></td>';
 		echo '<td>' . $commande['nom'] . '</td>';
 		echo '<td>' . $commande['prenom'] . '</td>';
 		echo '<td>' . number_format(round($commande['montant'],2), 2, '.', '') . '</td>';
@@ -148,7 +148,7 @@ $id_membre = $_SESSION['id'];
 	echo '<h2> Voici les commandes passées sur le site </h2>';
 	echo '<table border="1"><tr>';
 	
-	$sql = ("select id_commande,id_user,montant,date_enregistrement,etat from commande where id_user = '$id_membre'");
+	$sql = ("select * from commande where id_user = '$id_membre'");
 	$bdd = dbConnect();
         $req = $bdd->query($sql);
         $req->execute();
@@ -164,7 +164,7 @@ $id_membre = $_SESSION['id'];
 		?>
 		<thead>
 				<tr>
-					<th>Commande</th>
+					<th>Référence</th>
 					<th>Montant</th>
 					<th>Date d'achat</th>
 					<th>Etat</th>
@@ -182,7 +182,7 @@ $id_membre = $_SESSION['id'];
 		$chiffre_affaire += $commande['montant'];
 		echo '<div>';
 		echo '<tr>';
-		echo '<td><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">Voir la commande ' . $commande['id_commande'] . '</a></td>';	
+		echo '<td><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">' . $commande['ref_commande'] . '</a></td>';	
 		echo '<td>' . number_format(round($commande['montant'] ,2), 2, '.', ''). '€'.'</td>';
 		echo '<td>' .strftime('%d-%m-%Y',strtotime($commande['date_enregistrement'])).'</td>';
 		echo '<td>' . $commande['etat'] . '</td>';
@@ -217,7 +217,6 @@ $id_membre = $_SESSION['id'];
 			?>
 			<thead>
 					<tr>
-						<th>Numéro de Commande</th>
 						<th>Désignation</th>
 						<th>Quantité</th>
 						<th>Montant</th>
@@ -230,7 +229,6 @@ $id_membre = $_SESSION['id'];
 	
 		{
 			echo '<tr>';
-				echo '<td>' . $details_commande['id_commande'] . '</td>';
 				echo '<td>' . $details_commande['designation'] . '</td>';
 				echo '<td>' . $details_commande['quantite'] . '</td>';
 				echo '<td>' . number_format(round($details_commande['prix'],2), 2, '.', '') . '€'. '</td>';

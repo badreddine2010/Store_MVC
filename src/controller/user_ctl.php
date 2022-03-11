@@ -8,13 +8,16 @@
         $email = htmlspecialchars($_POST['email']);
         $passwd = htmlspecialchars($_POST['passwd']);
         $rep = getUserByEmail($email,$passwd);
-        // var_dump(($rep));
-        // die();
-        $_SESSION['user'] = $rep->getNom();
-        $_SESSION['statut'] = $rep->getStatut();
-        $_SESSION['id'] = $rep->getId();
-        // $_SESSION['user'] = $rep['nom'];
-        home();
+        if($rep){
+
+            $_SESSION['user'] = $rep->getNom();
+            $_SESSION['statut'] = $rep->getStatut();
+            $_SESSION['id'] = $rep->getId();
+            // $_SESSION['user'] = $rep['nom'];
+            home();
+        }
+        echo '<div class="alert alert-danger">Données érronées!!!!!</div>';
+        require 'src/view/user/login_form.php';
     }
     function login(){
         require 'src/view/user/login_form.php';

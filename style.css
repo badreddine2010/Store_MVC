@@ -1,20 +1,30 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
 body {
-    /* background-color: rgb(112, 112, 112); */
+    background-color:#efefef;
 }
 
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: lightblue;
-    /* color: white; */
-    text-align: center;
+    background-color: #131921;
+    color: white;
+    /* text-align: center; */
     padding: 20px;
+    margin: 0%;
+}
+nav{
+
+    background-color: #232f3e;
 }
 
 nav li {
     font-size: 1.5em;
 }
-.nav-link,th{
-    color:#f7931a;
+.nav-link,th,.active{
+    color:white;
 }
 
 a.btn.btn-warning {
@@ -48,7 +58,16 @@ button{
     text-align: center;
    
 }
-sup{
-    color: red;
+sup,.navbar-brand{
+    color: #f7931a;
 }
+.col{
+
+    justify-content: space-around;
+}
+.card{
+    height: 450px;
+    margin: 20px;
+}
+
 

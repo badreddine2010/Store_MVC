@@ -106,6 +106,7 @@ INSERT INTO `user_statut` (`id`, `nom`) VALUES
 
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` int(3) NOT NULL AUTO_INCREMENT,
+  `ref_commande` varchar(150) NOT NULL,
   `id_user` int(3) DEFAULT NULL,
   `montant` float(6) NOT NULL,
   `date_enregistrement` date NOT NULL,
@@ -116,7 +117,6 @@ CREATE TABLE IF NOT EXISTS `commande` (
 --
 -- Contenu de la table `commande`
 --
-
 
 
 -- --------------------------------------------------------

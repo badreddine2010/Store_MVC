@@ -2,7 +2,7 @@
 // session_start();
 if (isset($_SESSION['user'])) {
 }
-define("RACINE_SITE","http://localhost:8080/tp_store/");
+define("RACINE_SITE", "http://localhost:8080/tp_store/");
 
 ?>
 
@@ -24,13 +24,13 @@ define("RACINE_SITE","http://localhost:8080/tp_store/");
   <?php
   // if (isset($_SESSION['user'])) {
 
-    // echo "<h3>{$_SESSION['user']}</h3>";
+  // echo "<h3>{$_SESSION['user']}</h3>";
   // }
   ?>
-  
+
   <h1><img src="images/Bitcoin.svg.png" width="40" alt="">Ma Boutique</h1>
 
-  <nav class="navbar navbar-expand-lg navbar-secondary bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-secondary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Store MVC</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,28 +42,30 @@ define("RACINE_SITE","http://localhost:8080/tp_store/");
             <a class="nav-link active" aria-current="page" href="index.php?action=home">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php?action=panier">Panier<sup><?= $nbreArticles=(isset($_SESSION['panier']['libelleProduit']))?count($_SESSION['panier']['libelleProduit']):0; ?></sup></a>
-          </li>
-          <li class="nav-item">
-          <?php
-            if (isset($_SESSION['user']) && ($_SESSION['statut']==1 || $_SESSION['statut']==2 )) {
-           echo" <a class='nav-link' href='index.php?action=showCommandes'>Commandes</a>";
-            }?>
-          </li>
-
-          <li class="nav-item">
-          <?php
-
-            if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
-           echo" <a class='nav-link' href='index.php?action=showCategories'>Categories</a>";
-           ?>
+            <a class="nav-link active" aria-current="page" href="index.php?action=panier"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+              </svg><sup><?= $nbreArticles = (isset($_SESSION['panier']['libelleProduit'])) ? count($_SESSION['panier']['libelleProduit']) : 0; ?></sup></a>
           </li>
           <li class="nav-item">
             <?php
-            echo"<a class='nav-link' href='index.php?action=showProducts'>Produits</a>";
-            }else
-            echo"<a class='nav-link' href='index.php?action=showProductsCostumers'>Produits</a>";
-          
+            if (isset($_SESSION['user']) && ($_SESSION['statut'] == 1 || $_SESSION['statut'] == 2)) {
+              echo " <a class='nav-link' href='index.php?action=showCommandes'>Commandes</a>";
+            } ?>
+          </li>
+
+          <li class="nav-item">
+            <?php
+
+            if (isset($_SESSION['user']) && $_SESSION['statut'] == 1) {
+              echo " <a class='nav-link' href='index.php?action=showCategories'>Categories</a>";
+            ?>
+          </li>
+          <li class="nav-item">
+          <?php
+              echo "<a class='nav-link' href='index.php?action=showProducts'>Produits</a>";
+            } else
+              echo "<a class='nav-link' href='index.php?action=showProductsCostumers'>Produits</a>";
+
           ?>
           </li>
           </li>
@@ -81,18 +83,30 @@ define("RACINE_SITE","http://localhost:8080/tp_store/");
             ?>
           </li>
       </div>
-        </ul>
-      </div>
-          <div class="text-end">
-            <?php
-            if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
-              
-              echo '<a href="admin/login.php"><button type="button" class="btn btn-light text-dark me-2">Admin</button></a>';
-            }elseif 
-            (isset($_SESSION['user']) && $_SESSION['statut']==2) {
-              echo '<a href="admin/login.php"><button type="button" class="btn btn-light text-dark me-2">Client</button></a>';
-            }
-               ?>
+      </ul>
+    </div>
+    <div class="text-end">
+      <?php
+      if (isset($_SESSION['user']) && $_SESSION['statut'] == 1) {
+
+        echo '<a href="admin/login.php"><button type="button" class="btn btn-light text-dark me-2">Admin</button></a>';
+      } elseif (isset($_SESSION['user']) && $_SESSION['statut'] == 2) {
+        $nbreArticles = (isset($_SESSION['panier']['libelleProduit'])) ? count($_SESSION['panier']['libelleProduit']) : 0;
+        echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+        echo '<li class="nav-item">';
+        
+// echo '<a class="nav-link active" aria-current="page" href="index.php?action=panier"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+//                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+//               </svg><sup>'. $nbreArticles .'</sup></a>';
+
+        
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a href="admin/login.php"><button type="button" class="btn btn-light text-dark me-2">' . $_SESSION['user'] . '</button></a>';
+        echo '</li>';
+        echo '</ul>';
+      }
+      ?>
     </div>
   </nav>
   <div class="container">

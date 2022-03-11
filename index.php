@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 // use AppStore\Product;
 require "src/model/dbaccess.php";
 require "src/controller/product_ctl.php";
@@ -41,61 +41,61 @@ function home()
     </div> -->
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="images/tomate.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Tomate</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/tomate.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Tomate</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/Orange.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Orange</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pomme de terre</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/eau.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Eau</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/Orange.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Orange</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pomme de terre</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="images/Orange.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Orange</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Pomme de terre</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="images/eau.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Eau</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="images/Orange.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Orange</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Pomme de terre</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-</div>
 <?php
     $content = ob_get_clean();
     require "src/view/template.php";

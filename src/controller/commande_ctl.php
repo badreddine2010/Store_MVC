@@ -7,7 +7,7 @@ function validerCommande(){
 //        session_start();
 //  }
   //  @$valider=$_POST["valider"];
-  //  $date = new DateTime('Y');
+   $date = new DateTime();
  
    for($i=0 ;$i < count($_SESSION['panier']['id_produit']) ; $i++) 
    {
@@ -36,7 +36,8 @@ function validerCommande(){
    }
    if(!isset($erreur))
    {
-     $sql = ("INSERT INTO commande (id_user, montant, date_enregistrement) VALUES (" . $_SESSION['id'] . "," . MontantGlobal() . ", NOW())");
+    $reference = rand(1,10000000);
+     $sql = ("INSERT INTO commande (id_user, montant, date_enregistrement,ref_commande) VALUES (" . $_SESSION['id'] . "," . MontantGlobal() . ", NOW(), $reference)");
      $bdd = dbConnect();
      $req = $bdd->exec($sql);
     //  $req->execute();

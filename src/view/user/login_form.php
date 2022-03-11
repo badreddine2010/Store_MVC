@@ -1,6 +1,8 @@
 <?php
 
 // session_start();
+$title = "mvc-Store: Login";
+
 ob_start();
 ?>
 <!DOCTYPE html>
