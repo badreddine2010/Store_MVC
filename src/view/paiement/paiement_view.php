@@ -4,6 +4,8 @@
 
     @$valider = $_POST["valider"];
     $date = new DateTime('Y');
+$title = "mvc-Store: show paiement";
+
     ob_start();
     ?>
 

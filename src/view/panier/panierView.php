@@ -59,10 +59,10 @@ ob_start();
                         echo "</tbody>";
                         echo "<tfoot>";
 
-                        echo "<tr><th colspan=\"3\"> </th>";
-                        echo "<th colspan=\"3\">";
+                        echo "<tr><th> </th><th> </th><th> </th>";
+                        echo "<th>";
                         echo "Total : " . MontantGlobal() . '€';
-                        echo "</th></tr>";
+                        echo "<th> </th></th></tr>";
 
                         echo "<tr><th colspan=\"3\"> </th>";
                         echo "<th colspan=\"3\">";

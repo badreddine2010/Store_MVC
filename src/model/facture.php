@@ -42,7 +42,7 @@
     $pdf->SetFont('Arial','B',14);
     $pdf->Cell(130, 6,'', 0, 0);
     // $pdf->Cell(59, 6, utf8_decode($client['civilite']) .' '. utf8_decode($client['prenom']).' '.utf8_decode($client['nom']), 0, 1);
-    $pdf->Cell(59, 6, utf8_decode($client['prenom']).' '.utf8_decode($client['nom']), 0, 1);
+    $pdf->Cell(59, 6, utf8_decode($client['prenom']).' '.(utf8_decode(strtoupper($client['nom']))), 0, 1);
 
     // $pdf->SetFont('Arial','',12);
     // $pdf->Cell(130, 6,'', 0, 0);

@@ -27,7 +27,8 @@ define("RACINE_SITE","http://localhost:8080/tp_store/");
     // echo "<h3>{$_SESSION['user']}</h3>";
   // }
   ?>
-  <h1>Ma Boutique</h1>
+  
+  <h1><img src="images/Bitcoin.svg.png" width="40" alt="">Ma Boutique</h1>
 
   <nav class="navbar navbar-expand-lg navbar-secondary bg-dark">
     <div class="container-fluid">

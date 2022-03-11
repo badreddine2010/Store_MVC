@@ -13,6 +13,9 @@ h1 {
 nav li {
     font-size: 1.5em;
 }
+.nav-link,th{
+    color:#f7931a;
+}
 
 a.btn.btn-warning {
     margin: 10px;

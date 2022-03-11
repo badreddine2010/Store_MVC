@@ -53,7 +53,7 @@ function validerCommande(){
  
      unset($_SESSION['panier']);
      //mail($_SESSION['membre']['email'], "confirmation de la commande", "Merci votre numéro de suivi est le $id_commande", "From:vendeur@dp_site.com");
-     echo "<div class='alert alert-success'>Merci pour votre commande. Votre numéro de suivi est le $id_commande</div>";
+     echo "<div class='alert alert-success'><strong>Merci pour votre commande. Votre numéro de suivi est le $id_commande</strong></div>";
    }
  // }
         

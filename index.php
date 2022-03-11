@@ -17,7 +17,7 @@ function home()
     $title = "Store MVC: Accueil";
     ob_start();
 ?>
-    <!-- <img src="images/shop-gb033679a8_1280.jpg" alt="image_de_boutique"> -->
+    <!-- <img src="images/shop-gb033679a8_1280.jpg" alt="image_de_boutique">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
@@ -38,7 +38,64 @@ function home()
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div> -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="images/tomate.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Tomate</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
     </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="images/Orange.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Orange</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Pomme de terre</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="images/eau.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Eau</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="images/Orange.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Orange</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Pomme de terre</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+</div>
 <?php
     $content = ob_get_clean();
     require "src/view/template.php";
