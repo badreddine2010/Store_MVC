@@ -36,8 +36,13 @@ function diminuer()
 }
 function augmenter()
 {
+    $qte = getProductById($_GET['id']);
+    $cat = $qte->getQuantity();
+    
+    if($cat>intval($_GET['q'])){
 
-    modifierQteArticle($_GET['l'], intval($_GET['q']));
+        modifierQteArticle($_GET['l'], intval($_GET['q']));
+    }
 
     require 'src/view/panier/panierView.php';
 }

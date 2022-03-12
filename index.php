@@ -79,18 +79,18 @@ function home()
         </div>
         <div class="col">
             <div class="card">
-                <img src="images/Orange.jpg" class="card-img-top" alt="...">
+                <img src="images/banane.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Orange</h5>
+                    <h5 class="card-title">Banane</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card">
-                <img src="images/pomme de terre.jpg" class="card-img-top" alt="...">
+                <img src="images/soda.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Pomme de terre</h5>
+                    <h5 class="card-title">Soda</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>

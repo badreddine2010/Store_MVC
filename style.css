@@ -23,7 +23,7 @@ nav{
 nav li {
     font-size: 1.5em;
 }
-.nav-link,th,.active{
+.nav-link,.active{
     color:white;
 }
 
@@ -68,6 +68,9 @@ sup,.navbar-brand{
 .card{
     height: 450px;
     margin: 20px;
+}
+span{
+    background-color:orange;
 }
 
 

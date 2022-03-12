@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
+    header('location:../../../index.php');
+}
 $title = "mvc-Store: show products";
 ob_start();
 // $products['id'];
@@ -8,13 +11,13 @@ ob_start();
 
 <div class="container">
     <h1>Liste des produits</h1>
-    <table class="table table-dark table-primary table-striped">
+    <table class="table  table-primary table-striped">
         <thead>
             <tr>
                 <th scope="row">Id Produit</th>
                 <th scope="row">Nom Produit</th>
                 <th scope="row">Id Catégorie</th>
-                <th scope="row">Quantité</th>
+                <th scope="row">Stock</th>
                 <th scope="row">Prix Unitaire</th>
                 <th scope="row">action</th>
             </tr>

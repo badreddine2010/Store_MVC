@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
+    header('location:../../../index.php');
+}
 $title = "mvc-Store: show Categories";
 ob_start();
 
@@ -6,7 +9,7 @@ ob_start();
 
 <div class="container">
     <h1>Liste des catégories</h1>
-    <table class="table table-dark table-primary table-striped">
+    <table class="table table-primary table-striped">
         <thead>
             <tr>
                 <th scope="row">id</th>

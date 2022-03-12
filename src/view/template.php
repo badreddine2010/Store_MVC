@@ -1,7 +1,6 @@
 <?php
 // session_start();
-if (isset($_SESSION['user'])) {
-}
+
 define("RACINE_SITE", "http://localhost:8080/tp_store/");
 
 ?>

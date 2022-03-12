@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
+    header('location:../../../index.php');
+}
 $titre = "My Store MVC: Creation Product";
 ob_start();
 

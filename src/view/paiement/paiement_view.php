@@ -1,6 +1,7 @@
-<head>
-    <?php
-
+<?php
+if(!isset($_SESSION['user'])){
+    header('location:../../../index.php');
+}
 
     @$valider = $_POST["valider"];
     $date = new DateTime('Y');

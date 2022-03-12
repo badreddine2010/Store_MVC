@@ -126,8 +126,7 @@ function deleteCommande($id) {
     $ret = false;
 
     $sql = "DELETE FROM commande";
-    $sql .= " WHERE id 
-    µ£_commande={$id}";
+    $sql .= " WHERE id_commande={$id}";
 
     try {
         $bdd = dbConnect();
