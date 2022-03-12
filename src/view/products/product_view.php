@@ -1,14 +1,14 @@
 <?php
+//Vérifier la connexion de l'Admin
 if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
     header('location:../../../index.php');
 }
+//titre de la page
 $title = "mvc-Store: show products";
 ob_start();
-// $products['id'];
-// var_dump($products['name']);
-// die();
-?>
 
+?>
+<!-- Afficher la table des produits Admin -->
 <div class="container">
     <h1>Liste des produits</h1>
     <table class="table  table-primary table-striped">

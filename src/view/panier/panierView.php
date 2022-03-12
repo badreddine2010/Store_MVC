@@ -1,11 +1,10 @@
 <?php
+//Démarrer la session
 if (!isset($_SESSION)) {
     session_start();
 }
-error_reporting(0);
 
-
-
+//titre de la page
 $title = "mvc-Store: show panier";
 
 
@@ -21,7 +20,7 @@ ob_start();
 
 <body>
 
-
+    <!-- Afficher le panier -->
     <div class="container">
         <h1>Mon panier</h1>
         <table class="table table-primary table-striped">
@@ -68,7 +67,6 @@ ob_start();
                         echo "<th colspan=\"3\">";
                         echo "<a href='?action=viderPanier'><button class='btn btn-warning'>Vider le panier</button></a>";
                         if (isset($_SESSION['user'])){
-                            // echo "<a href='?action=validerCommande'><button class='btn btn-success'>Valider votre commande</button></a>";
                             echo "<a href='?action=paiement'><button class='btn btn-success'>Valider votre commande</button></a>";
 
                         }else{

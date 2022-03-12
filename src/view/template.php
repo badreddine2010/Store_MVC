@@ -1,8 +1,6 @@
 <?php
 // session_start();
 
-define("RACINE_SITE", "http://localhost:8080/tp_store/");
-
 ?>
 
 <!DOCTYPE html>
@@ -19,14 +17,8 @@ define("RACINE_SITE", "http://localhost:8080/tp_store/");
 </head>
 
 <body>
-  <!-- <img src="../../images/" alt=""> -->
-  <?php
-  // if (isset($_SESSION['user'])) {
 
-  // echo "<h3>{$_SESSION['user']}</h3>";
-  // }
-  ?>
-
+  <!-- Afficher la barre de navigation -->
   <h1><img src="images/Bitcoin.svg.png" width="40" alt="">Ma Boutique</h1>
 
   <nav class="navbar navbar-expand-lg navbar-secondary">
@@ -93,12 +85,12 @@ define("RACINE_SITE", "http://localhost:8080/tp_store/");
         $nbreArticles = (isset($_SESSION['panier']['libelleProduit'])) ? count($_SESSION['panier']['libelleProduit']) : 0;
         echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">';
         echo '<li class="nav-item">';
-        
-// echo '<a class="nav-link active" aria-current="page" href="index.php?action=panier"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-//                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-//               </svg><sup>'. $nbreArticles .'</sup></a>';
 
-        
+        // echo '<a class="nav-link active" aria-current="page" href="index.php?action=panier"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+        //                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+        //               </svg><sup>'. $nbreArticles .'</sup></a>';
+
+
         echo '</li>';
         echo '<li class="nav-item">';
         echo '<a href="admin/login.php"><button type="button" class="btn btn-light text-dark me-2">' . $_SESSION['user'] . '</button></a>';
@@ -113,6 +105,7 @@ define("RACINE_SITE", "http://localhost:8080/tp_store/");
     <?= $content ?>
   </div>
 
+  <!-- Afficher le footer -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <div class="container">
@@ -132,53 +125,6 @@ define("RACINE_SITE", "http://localhost:8080/tp_store/");
         <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
       </symbol>
     </svg>
-
-    <!-- <div class="row">
-      <div class="col-2">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tarification</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-2">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tarification</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-2">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accueil</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tarification</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-4 offset-1">
-        <form>
-          <h5>Abonnez-vous à notre newsletter</h5>
-          <p>Résumé mensuel de ce qui est nouveau et excitant de notre part.</p>
-          <div class="d-flex w-100 gap-2">
-            <label for="newsletter1" class="visually-hidden">Adresse mail</label>
-            <input id="newsletter1" type="text" class="form-control" placeholder="Adresse mail">
-            <button class="btn btn-primary" type="button">S'inscrire</button>
-          </div>
-        </form>
-      </div>
-    </div> -->
 
     <div class="d-flex justify-content-between py-4 my-4 border-top">
       <p>&copy; 2022 Badreddine DJAIZ, Inc. All rights reserved.</p>

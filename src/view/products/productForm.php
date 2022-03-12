@@ -1,18 +1,19 @@
 <?php
+//Vérifier la connexion de l'Admin
 if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
     header('location:../../../index.php');
 }
+//titre de la page
 $titre = "My Store MVC: Creation Product";
+
 ob_start();
 
-    
+//Vérifier l'action de l'Admin entre Création ou Modification   
 if (!isset($product)) {
     $link = "index.php?action=nProduct";
     $name = "";
     $category_id = "";
     $categories=getAllCategories();
-    // var_dump($categories);
-    // die;
     $quantity = "";
     $unit_price = "";
 
@@ -28,6 +29,7 @@ if (!isset($product)) {
     $btnText = "Modifier le produit";
 }
 ?>
+<!-- Afficher le formulaire de création ou de modification -->
 <div class="container">
     <form action=<?= $link ?> method="post">
 
@@ -36,15 +38,14 @@ if (!isset($product)) {
             <input type="text" class="form-control" id="name" name="name" placeholder="" value="<?= $name ?>">
         </div>
         <div class="form-group mb-20">
-            <!-- <label for="category_id">Id Catégorie</label>
-            <input type="text" class="form-control" id="category_id" name="category_id" placeholder="" value="<?= $category_id ?>">
-            <label for="taille">Catégorie</label><br /> -->
-		<select required name="category">
+            
+		<select class="form-select" required name="category">
             <?php
+           echo '<option class="option" value="" selected><strong><---------SELECTIONNER UNE CATEGORIE---------></strong<</option>';
            
             foreach($categories as $cat){
 
-                echo '<option value="'.$cat->getId().'">'.$cat->getNom().'</option>';
+                echo '<option class="form-control" value="'.$cat->getId().'">'.$cat->getNom().'</option>';
             }
             ?>
 		</select>

@@ -1,12 +1,18 @@
 <?php
+//Vérifier l'existence de l'admin
 if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
     header('location:../../../index.php');
 }
+
+//titre du fichier
 $title = "mvc-Store: show Categories";
+
+/*Début 
+ de l'enregistrement de la page */
 ob_start();
 
 ?>
-
+<!-- Affichage de la table catégories -->
 <div class="container">
     <h1>Liste des catégories</h1>
     <table class="table table-primary table-striped">

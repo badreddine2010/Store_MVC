@@ -1,9 +1,10 @@
 <?php
-
-// session_start();
+//titre de la page
 $title = "mvc-Store: Login";
 
 ob_start();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,6 +17,8 @@ ob_start();
     <title>Authentification : Signin Page</title>
 </head>
 <body>
+    
+<!-- Afficher le formulaire de connexion -->
 <h1>Connexion</h1>
     <form action="index.php?action=getUser" method="post">
         

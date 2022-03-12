@@ -1,16 +1,19 @@
 
 <?php
+//Vérifier l'existence du User
 if(!isset($_SESSION['user'])){
     header('location:../../../index.php');
 }
-
+//titre de la page
 $title = "mvc-Store: show Commandes";
+
 ob_start();
+
+//Admin connecté
 if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 
-//-------------------------------------------------- Affichage ---------------------------------------------------------//
+//-------------------------------------Affichage des commandes Admin---------------------------------------------------------//
 
-//require_once("../inc/menu.inc.php");
 	echo '<h2> Voici les commandes passées sur le site </h2>';
 	echo '<table border="1"><tr>';
 	
@@ -22,9 +25,7 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 	$information_sur_les_commandes = $req->fetchAll();
 	echo "<strong>Nombre de commande(s) : " .$req->rowCount()."</strong>";
 	echo "<table class='table table-primary'> <tr>";
-	//while($colonne = $information_sur_les_commandes->fetch_field())
 	{    
-		//echo '<th>' . $colonne->name . '</th>';
 		?>
 		<thead>
 				<tr>
@@ -74,24 +75,17 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 	echo '<br />';
 	if(isset($_GET['suivi']))
 	{	
-		// echo '<table table table-bordered>';
-		// echo '<tr>';
 		$sql = ("select * from details_commande INNER JOIN commande ON commande.id_commande=details_commande.id_commande where details_commande.id_commande=$_GET[suivi]");
 		$bdd = dbConnect();
         $req = $bdd->query($sql);
         $req->execute();
         $req->setFetchMode(PDO::FETCH_ASSOC);
         $information_sur_une_commande = $req->fetchAll();
-		// var_dump($information_sur_une_commande);
-		// die;
 		echo '<h2> Voici les détails pour la commande numéro :<span>' . $information_sur_une_commande[0]['ref_commande'] . '</span></h2>';
-		//$nbcol = $information_sur_une_commande->field_count;
-		//$nbcol = $information_sur_une_commande->field_count;
+		
+		//Afficher le détails des commandes Admin
 		echo "<table class='table table-primary'> <tr>";
-		//for ($i=0; $i < $nbcol; $i++)
 		{    
-			//$colonne = $information_sur_une_commande->fetch_field(); 
-			//echo '<th>' . $colonne->name . '</th>';
 			?>
 			<thead>
 					<tr>
@@ -124,25 +118,10 @@ else{
 	
 	if (isset($_SESSION['user']) && $_SESSION['statut']==2) {
 
-		// function dbConnect() {
-		// 	$connectString = "mysql:host=localhost;dbname=tp_store;charset=utf8";
-		// 	try {
-		// 	$bdd = new PDO($connectString, "root", "", 
-		// 				array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)
-		// 			);
-		// 			return $bdd;
-		// 	}
-		// 	catch (PDOException $ex) {
-		// 		var_dump("Erreur GET COURSE: {$ex->getMessage()}");
-		// 	}
-		// }
-
-//-------------------------------------------------- Affichage ---------------------------------------------------------//
-//require_once("../inc/menu.inc.php");
+//----------------------------------------Affichage des commandes User---------------------------------------------------------//
 $id_membre = $_SESSION['id'];
 
 	echo '<h2> Voici les commandes passées sur le site </h2>';
-	// echo '<table border="1"><tr>';
 	
 	$sql = ("select * from commande where id_user = '$id_membre'");
 	$bdd = dbConnect();
@@ -154,9 +133,7 @@ $id_membre = $_SESSION['id'];
 		echo "<strong>Nombre de commande(s) : " .$req->rowCount()."</strong>";
 
 	echo "<table class='table table-primary'> <tr>";
-	//while($colonne = $information_sur_les_commandes->fetch_field())
 	{    
-		//echo '<th>' . $colonne->name . '</th>';
 		?>
 		<thead>
 				<tr>
@@ -170,9 +147,6 @@ $id_membre = $_SESSION['id'];
 	}
 	echo "</tr>";
 	$chiffre_affaire = 0;
-	// while ($commande = $req->fetch())
-	// var_dump($information_sur_les_commandes);
-	// die;
 	foreach($information_sur_les_commandes as $key=>$commande){
 	
 		$chiffre_affaire += $commande['montant'];
@@ -194,10 +168,7 @@ $id_membre = $_SESSION['id'];
 	echo '<br />';
 	echo '<br />';
 	if(isset($_GET['suivi'])){	
-		// echo '<table table table-bordered>';
-		// echo '<tr>';
 		$sql =("select * from details_commande INNER JOIN commande ON commande.id_commande=details_commande.id_commande where details_commande.id_commande=$_GET[suivi]");
-		// $sql =("select * from details_commande where id_commande=3");
 		$bdd = dbConnect();
         $req = $bdd->query($sql);
         $req->execute();
@@ -205,12 +176,9 @@ $id_membre = $_SESSION['id'];
         $information_sur_une_commande = $req->fetchAll();
 		echo '<h2> Voici les détails pour la commande numéro :<span>' . $information_sur_une_commande[0]['ref_commande'] . '</span></h2>';
 
-		//$nbcol = $information_sur_une_commande->field_count;
+		//Afficher les détails d'une commande User
 		echo "<table class='table table-primary'> <tr>";
-		//for ($i=0; $i < $nbcol; $i++)
-		// {    
-			//$colonne = $information_sur_une_commande->fetch_field(); 
-			//echo '<th>' . $colonne->name . '</th>';
+		
 			?>
 			<thead>
 					<tr>
