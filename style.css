@@ -71,9 +71,16 @@ sup,.navbar-brand{
 }
 span{
     background-color:orange;
+    padding:0 5px;
+    border-radius: 6px;
 }
-.option{
-    color:red;
+a{
+    text-decoration: none;
+    /* font-weight: bold; */
+    color: white;
+}
+a:hover{
+    color: orange;
 }
 
 
