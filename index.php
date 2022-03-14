@@ -126,7 +126,13 @@ if (isset($_GET['action'])) {
 
         case 'cCategory':
         case 'mCategory':
-            createCategoryForm();
+            if(isset($_SESSION['user'])){
+
+                createCategoryForm();
+            }else{
+                home();
+            }
+            // createCategoryForm();
             break;
 
 
