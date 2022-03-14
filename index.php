@@ -1,5 +1,7 @@
 <?php
 session_start();
+define("ACCESS_INDEX", true);
+
 // require 'vendor/autoload.php';
 // use AppStore\Product;
 require "src/model/dbaccess.php";
@@ -90,7 +92,7 @@ function home()
             <div class="card">
                 <img src="images/soda.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Soda</h5>
+                    <h5 class="card-title">soda</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
@@ -117,40 +119,88 @@ if (isset($_GET['action'])) {
             /* Actions pour CATEGORIES */
             /* *********************** */
         case 'showCategories':
-            showAllCategories();
+            if(isset($_SESSION['user'])){
+
+                showAllCategories();
+            }else{
+                home();
+            }
+            // showAllCategories();
             break;
 
         case 'dCategory':
-            deleteCategory($_GET['id']);
+            if(isset($_SESSION['user'])){
+
+                deleteCategory($_GET['id']);
+            }else{
+                home();
+            }
+            // deleteCategory($_GET['id']);
             break;
 
         case 'cCategory':
         case 'mCategory':
-            createCategoryForm();
+            if(isset($_SESSION['user'])){
+
+                createCategoryForm();
+            }else{
+                home();
+            }
+            // createCategoryForm();
             break;
 
 
         case 'saveCategory':
-            createOrUpdateCategory();
+            if(isset($_SESSION['user'])){
+
+                createOrUpdateCategory();
+            }else{
+                home();
+            }
+            // createOrUpdateCategory();
             break;
 
             /* Actions pour PRODUCTS */
             /* ********************* */
         case 'showProducts':
-            showAllProducts();
+            if(isset($_SESSION['user'])){
+
+                showAllProducts();
+            }else{
+                home();
+            }
+            // showAllProducts();
             break;
 
         case 'dProduct':
-            deleteProduct();
+            if(isset($_SESSION['user'])){
+
+                deleteProduct();
+            }else{
+                home();
+            }
+            // deleteProduct();
             break;
 
         case 'cProduct':
         case 'mProduct':
-            createProductForm();
+            if(isset($_SESSION['user'])){
+
+                createProductForm();
+            }else{
+                home();
+            }
+            // createProductForm();
             break;
 
         case 'nProduct':
-            createOrChangeProduct();
+            if(isset($_SESSION['user'])){
+
+                createOrChangeProduct();
+            }else{
+                home();
+            }
+            // createOrChangeProduct();
             break;
 
             /* Actions pour users */
@@ -195,30 +245,71 @@ if (isset($_GET['action'])) {
             /* Actions pour la commande */
             /* ************************ */
         case 'validerCommande':
-            validerCommande();
+            if(isset($_SESSION['user'])){
+
+                validerCommande();
+            }else{
+                home();
+            }
             break;
         case 'detailsCommande':
-            detailsCommande();
+            if(isset($_SESSION['user'])){
+
+                detailsCommande();
+            }else{
+                home();
+            }
+            // detailsCommande();
             break;
         case 'showCommandes':
-            showCommandes();
+            if(isset($_SESSION['user'])){
+
+                showCommandes();
+            }else{
+                home();
+            }
+            // showCommandes();
             break;
         case 'vCommande':
-            vCommande();
+            if(isset($_SESSION['user'])){
+
+                vCommande();
+            }else{
+                home();
+            }
+            // vCommande();
             break;
         case 'dCommande':
-            dCommande();
+            if(isset($_SESSION['user'])){
+
+                dCommande();
+            }else{
+                home();
+            }
+            // dCommande();
             break;
 
             /* Actions pour la facture */
             /* ************************ */
         case 'facture':
-            facture();
+            if(isset($_SESSION['user'])){
+
+                facture();
+            }else{
+                home();
+            }
+            // facture();
             break;
             /* Actions pour le paiement */
             /* ************************ */
         case 'paiement':
-            paiement();
+            if(isset($_SESSION['user'])){
+
+                paiement();
+            }else{
+                home();
+            }
+            // paiement();
             break;
 
         default:

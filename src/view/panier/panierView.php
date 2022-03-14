@@ -1,10 +1,14 @@
 <?php
-//Démarrer la session
+// if (!isset($_SESSION)) {
+//     session_start();
+// }
 if (!isset($_SESSION)) {
-    session_start();
-}
+    header('location:../../../index.php');
+    }
+error_reporting(0);
 
-//titre de la page
+
+
 $title = "mvc-Store: show panier";
 
 
@@ -20,7 +24,7 @@ ob_start();
 
 <body>
 
-    <!-- Afficher le panier -->
+
     <div class="container">
         <h1>Mon panier</h1>
         <table class="table table-primary table-striped">
@@ -49,7 +53,7 @@ ob_start();
                             echo "<td><a href='?action=diminuer&q={$_SESSION['panier']['qteProduit'][$i]}&l={$_SESSION['panier']['libelleProduit'][$i]}'><button class='btn btn-primary'>-</button></a>
                                     <input id='input' type=\"text\" size=\"1\" name=\"q[]\" value=\"" . htmlspecialchars($_SESSION['panier']['qteProduit'][$i]) . "\"/>
                                     <input id='input' type=\"hidden\" size=\"1\" name=\"id[]\" value=\"" . htmlspecialchars($_SESSION['panier']['id_produit'][$i]) . "\"/>
-                                    <a  href='?action=augmenter&id={$_SESSION['panier']['id_produit'][$i]}&q={$_SESSION['panier']['qteProduit'][$i]}&l={$_SESSION['panier']['libelleProduit'][$i]}'><button id='le_plus' class='btn btn-primary'>+</button></a></td>";
+                                    <a  href='?action=augmenter&q={$_SESSION['panier']['qteProduit'][$i]}&l={$_SESSION['panier']['libelleProduit'][$i]}'><button id='le_plus' class='btn btn-primary'>+</button></a></td>";
                             echo "<td>" . htmlspecialchars($_SESSION['panier']['prixProduit'][$i]) . '€' . "</td>";
                             echo "<td>" . number_format(round(htmlspecialchars($_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i]),2), 2, '.', '') . '€' . "</td>";
                             echo "<td><a href=\"" . htmlspecialchars("?action=suppression&l=" . rawurlencode($_SESSION['panier']['libelleProduit'][$i])) . "\"><button class='btn btn-danger'>Supprimer</button></a></td>";
@@ -67,7 +71,8 @@ ob_start();
                         echo "<th colspan=\"3\">";
                         echo "<a href='?action=viderPanier'><button class='btn btn-warning'>Vider le panier</button></a>";
                         if (isset($_SESSION['user'])){
-                            echo "<a href='?action=paiement'><button class='btn btn-success'>Valider votre commande</button></a>";
+                            echo "<a href='?action=validerCommande'><button class='btn btn-success'>Valider votre commande</button></a>";
+                            // echo "<a href='?action=paiement'><button class='btn btn-success'>Valider votre commande</button></a>";
 
                         }else{
                             echo "<a href='?action=login'><button class='btn btn-primary'>Connectez-vous</button></a>";

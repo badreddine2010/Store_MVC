@@ -1,10 +1,9 @@
 <?php
-//titre de la page
+
+// session_start();
 $title = "mvc-Store: Login";
 
 ob_start();
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,11 +16,9 @@ ob_start();
     <title>Authentification : Signin Page</title>
 </head>
 <body>
-    
-<!-- Afficher le formulaire de connexion -->
 <h1>Connexion</h1>
     <form action="index.php?action=getUser" method="post">
-        
+        <br>
         <div class="form-group mb-20">
             <label for="email">Votre adresse de messagerie</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre adresse de messagerie"/>

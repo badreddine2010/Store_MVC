@@ -1,38 +1,87 @@
 
 <?php
-//Vérifier l'existence du User
-if(!isset($_SESSION['user'])){
-    header('location:../../../index.php');
-}
-//titre de la page
+// if (!isset($_SESSION)) {
+
+// 	session_start();
+// }
+error_reporting(0);
+if (!isset($_SESSION)) {
+	header('location:../../../index.php');
+	}
+
 $title = "mvc-Store: show Commandes";
-
 ob_start();
-
-//Admin connecté
 if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 
-//-------------------------------------Affichage des commandes Admin---------------------------------------------------------//
+	if(isset($_GET['suivi']))
+	{	
+		echo '<table table table-bordered>';
+		echo '<tr>';
+		$sql = ("select * from details_commande inner join commande on details_commande.id_commande=commande.id_commande where details_commande.id_commande=$_GET[suivi]");
+		$bdd = dbConnect();
+        $req = $bdd->query($sql);
+        $req->execute();
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        $information_sur_une_commande = $req->fetchAll();
+		
+		echo '<h1> Voici le détails de la commande N°:<span>' . $information_sur_une_commande[0]['ref_commande'] . '</span></h1>';
+		echo "<table class='table table-dark'> <tr>";
+		{    
+			
+			?>
+			<thead>
+					<tr>
+						<th>Id_Détail_Commande</th>
+						<th>Numéro de Commande</th>
+						<th>Id_Produit</th>
+						<th>Désignation</th>
+						<th>Quantité</th>
+						<th>Montant</th>
+						
 
-	echo '<h2> Voici les commandes passées sur le site </h2>';
+					</tr>
+				</thead> <?php
+		}
+		echo "</tr>";
+		
+		foreach($information_sur_une_commande as $key=>$details_commande)
+
+		{
+			
+			echo '<tr>';
+				echo '<td>' . $details_commande['id_details_commande'] . '</td>';
+				echo '<td>' . $details_commande['id_commande'] . '</td>';
+				echo '<td>' . $details_commande['id_produit'] . '</td>';
+				echo '<td>' . $details_commande['designation'] . '</td>';
+				echo '<td>' . $details_commande['quantite'] . '</td>';
+				echo '<td>' . number_format(round($details_commande['prix'],2), 2, '.', ''). '€'.'</td>';
+
+			echo '</tr>';
+		}
+		echo '</table>';
+	}
+
+//-------------------------------------------------- Affichage ---------------------------------------------------------//
+
+	echo '<h1> Voici toutes les commandes passées sur notre site </h1>';
 	echo '<table border="1"><tr>';
 	
-	$sql = ("select * from commande left join user  on  user.id = id_user");
+	$sql = ("select * from commande left join user  on  user.id = id_user order by date_enregistrement desc");
 	$bdd = dbConnect();
 	$req = $bdd->query($sql);
 	$req->execute();
 	$req->setFetchMode(PDO::FETCH_ASSOC);
 	$information_sur_les_commandes = $req->fetchAll();
-	echo "<strong>Nombre de commande(s) : " .$req->rowCount()."</strong>";
-	echo "<table class='table table-primary'> <tr>";
+	echo "<strong>Nombre de commande(s) :<span>" .$req->rowCount()."</span></strong>";
+	echo "<table class='table table-primary table-striped'> <tr>";
 	{    
 		?>
 		<thead>
 				<tr>
-					<th>Référence</th>
+					<th>Commande</th>
 					<th>Nom</th>
 					<th>Prénom</th>
-					<th>Montant facture</th>
+					<th>Montant</th>
 					<th>Date d'achat</th>
 					<th>Etat</tthh>
 					<th>Adresse mail</th>
@@ -48,7 +97,7 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 		$chiffre_affaire += $commande['montant'];
 		echo '<div>';
 		echo '<tr>';
-		echo '<td><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">' . $commande['ref_commande'] . '</a></td>';
+		echo '<td><button class="btn btn-primary"><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">' . $commande['ref_commande'] . '</a></button></td>';	
 		echo '<td>' . $commande['nom'] . '</td>';
 		echo '<td>' . $commande['prenom'] . '</td>';
 		echo '<td>' . number_format(round($commande['montant'],2), 2, '.', '') . '</td>';
@@ -64,7 +113,7 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 	echo '</table><br />';
 
 	//Afficher le chiffre d'affaires
-	echo '<div class="alert alert-success">';
+	echo '<div class="alert alert-warning">';
 	echo '<strong>Calcul du montant total des revenus</strong>:  <br />';
 		print "<strong>le chiffre d'affaires de la sociéte est de : $chiffre_affaire €</strong>"; 
 	echo '</div>';
@@ -73,72 +122,67 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
 	echo '<br />';
 	echo '<br />';
 	echo '<br />';
-	if(isset($_GET['suivi']))
-	{	
-		$sql = ("select * from details_commande INNER JOIN commande ON commande.id_commande=details_commande.id_commande where details_commande.id_commande=$_GET[suivi]");
-		$bdd = dbConnect();
-        $req = $bdd->query($sql);
-        $req->execute();
-        $req->setFetchMode(PDO::FETCH_ASSOC);
-        $information_sur_une_commande = $req->fetchAll();
-		echo '<h2> Voici les détails pour la commande numéro :<span>' . $information_sur_une_commande[0]['ref_commande'] . '</span></h2>';
-		
-		//Afficher le détails des commandes Admin
-		echo "<table class='table table-primary'> <tr>";
-		{    
-			?>
-			<thead>
-					<tr>
-						<th>Désignation</th>
-						<th>Quantité</th>
-						<th>Montant</th>
-						
-
-					</tr>
-				</thead> 
-				<?php
-		}
-		echo "</tr>";
-		
-		foreach($information_sur_une_commande as $key=>$details_commande)
-
-		{
-			
-			echo '<tr>';
-				echo '<td>' . $details_commande['designation'] . '</td>';
-				echo '<td>' . $details_commande['quantite'] . '</td>';
-				echo '<td>' . number_format(round($details_commande['prix'],2), 2, '.', ''). '€'.'</td>';
-
-			echo '</tr>';
-		}
-		echo '</table>';
-	}
+	
 }
 else{             
 	
 	if (isset($_SESSION['user']) && $_SESSION['statut']==2) {
 
-//----------------------------------------Affichage des commandes User---------------------------------------------------------//
+		if(isset($_GET['suivi'])){	
+			echo '<tr>';
+			$sql = ("select * from details_commande inner join commande on details_commande.id_commande=commande.id_commande where details_commande.id_commande=$_GET[suivi]");
+			$bdd = dbConnect();
+			$req = $bdd->query($sql);
+			$req->execute();
+			$req->setFetchMode(PDO::FETCH_ASSOC);
+			$information_sur_une_commandes = $req->fetchAll();
+			echo '<h1> Voici le détails de la commande N°:<span>' . $information_sur_une_commandes[0]['ref_commande'] . '</span></h1>';
+			echo "<table class='table table-primary teble-striped'> <tr>";
+			
+				?>
+				<thead>
+						<tr>
+							<th>Désignation</th>
+							<th>Quantité</th>
+							<th>Montant</th>
+						</tr>
+					</thead> <?php
+			// }
+			echo "</tr>";
+			
+			foreach($information_sur_une_commandes as $key=>$details_commande)
+		
+			{
+				echo '<tr>';
+					echo '<td>' . $details_commande['designation'] . '</td>';
+					echo '<td>' . $details_commande['quantite'] . '</td>';
+					echo '<td>' . number_format(round($details_commande['prix'],2), 2, '.', '') . '€'. '</td>';
+				echo '</tr>';
+			}
+			echo '</table>';
+		}
+
+//-------------------------------------------------- Affichage ---------------------------------------------------------//
 $id_membre = $_SESSION['id'];
 
-	echo '<h2> Voici les commandes passées sur le site </h2>';
+	echo '<h1> Voici vos commandes passées sur notre site </h1>';
 	
-	$sql = ("select * from commande where id_user = '$id_membre'");
+	$sql = ("select * from commande where id_user = '$id_membre' order by date_enregistrement desc");
 	$bdd = dbConnect();
         $req = $bdd->query($sql);
         $req->execute();
         $req->setFetchMode(PDO::FETCH_ASSOC);
         $information_sur_les_commandes = $req->fetchAll();
 	
-		echo "<strong>Nombre de commande(s) : " .$req->rowCount()."</strong>";
+	echo "<strong>Nombre de commande(s) :<span> " . $req->rowCount()."</span></strong>";
 
-	echo "<table class='table table-primary'> <tr>";
+	echo "<table class='table table-primary table-striped'> <tr>";
 	{    
 		?>
 		<thead>
 				<tr>
 					<th>Référence</th>
-					<th>Montant facture</th>
+					<th>Montant</th>
 					<th>Date d'achat</th>
 					<th>Etat</th>
 					<th>Facture</th>
@@ -152,11 +196,11 @@ $id_membre = $_SESSION['id'];
 		$chiffre_affaire += $commande['montant'];
 		echo '<div>';
 		echo '<tr>';
-		echo '<td><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">' . $commande['ref_commande'] . '</a></td>';	
+		echo '<td><button class="btn btn-primary"><a href="?action=detailsCommande&suivi=' . $commande['id_commande'] . '">' . $commande['ref_commande'] . '</a></button></td>';	
 		echo '<td>' . number_format(round($commande['montant'] ,2), 2, '.', ''). '€'.'</td>';
 		echo '<td>' .strftime('%d-%m-%Y',strtotime($commande['date_enregistrement'])).'</td>';
 		echo '<td>' . $commande['etat'] . '</td>';
-		echo '<td><a class="" target="_blank" href="?action=facture&id_commande='.$commande["id_commande"].'">Facture au format pdf</a></td>';
+		echo '<td><button class="btn btn-primary"><a class="" target="_blank" href="?action=facture&id_commande='.$commande["id_commande"].'">Facture au format pdf</a></button></td>';
 		echo '</tr>	';
 		echo '</div>';
 	}
@@ -167,40 +211,7 @@ $id_membre = $_SESSION['id'];
 	echo '<br />';
 	echo '<br />';
 	echo '<br />';
-	if(isset($_GET['suivi'])){	
-		$sql =("select * from details_commande INNER JOIN commande ON commande.id_commande=details_commande.id_commande where details_commande.id_commande=$_GET[suivi]");
-		$bdd = dbConnect();
-        $req = $bdd->query($sql);
-        $req->execute();
-        $req->setFetchMode(PDO::FETCH_ASSOC);
-        $information_sur_une_commande = $req->fetchAll();
-		echo '<h2> Voici les détails pour la commande numéro :<span>' . $information_sur_une_commande[0]['ref_commande'] . '</span></h2>';
-
-		//Afficher les détails d'une commande User
-		echo "<table class='table table-primary'> <tr>";
-		
-			?>
-			<thead>
-					<tr>
-						<th>Désignation</th>
-						<th>Quantité</th>
-						<th>Montant</th>
-					</tr>
-				</thead> <?php
-		// }
-		echo "</tr>";
-		
-		foreach($information_sur_une_commande as $key=>$details_commande)
 	
-		{
-			echo '<tr>';
-				echo '<td>' . $details_commande['designation'] . '</td>';
-				echo '<td>' . $details_commande['quantite'] . '</td>';
-				echo '<td>' . number_format(round($details_commande['prix'],2), 2, '.', '') . '€'. '</td>';
-			echo '</tr>';
-		}
-		echo '</table>';
-	}
 	
 
 }

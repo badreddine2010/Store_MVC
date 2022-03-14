@@ -1,17 +1,17 @@
 <?php
-//Vérifier la connexion de l'Admin
-if(!isset($_SESSION['user']) && $_SESSION['statut']!=1){
+if (!isset($_SESSION)) {
     header('location:../../../index.php');
 }
-//titre de la page
 $title = "mvc-Store: show products";
 ob_start();
-
+// $products['id'];
+// var_dump($products['name']);
+// die();
 ?>
-<!-- Afficher la table des produits Admin -->
+
 <div class="container">
     <h1>Liste des produits</h1>
-    <table class="table  table-primary table-striped">
+    <table class="table table-primary table-striped">
         <thead>
             <tr>
                 <th scope="row">Id Produit</th>
@@ -23,8 +23,14 @@ ob_start();
             </tr>
         </thead>
         <tbody>
-            
+
             <?php foreach ($products as $key => $value) {
+                if ($value->getQuantity() <= 0) {
+                    $quantity = '<button class="btn btn-danger"><strong>Rupture de stock</strong></button>';
+                }else{
+                    $quantity=$value->getQuantity();
+                }
+
                 # code...
                 echo "<tbody>
             <tr>
@@ -40,11 +46,10 @@ ob_start();
                     $value->getNameCat() .
                     "</td>
             <td>" .
-                    $value->getQuantity() .
-                    "</td>
+                    $quantity .                    "</td>
             <td>" .
                     $value->getUnit_price()
-                    .'€'.
+                    . '€' .
                     "</td>
             
             <td><a class='btn btn-warning' href='index.php?action=mProduct&id={$value->getId_prod()}'>modifier</a>
