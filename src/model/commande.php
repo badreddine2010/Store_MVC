@@ -1,5 +1,5 @@
 <?php
-class membre{
+class Commande{
     private string $montant;
     private float $date_enregistrement;
     private float $etat;
