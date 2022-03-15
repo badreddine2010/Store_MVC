@@ -22,30 +22,25 @@ ob_start();
         </thead>
         <tbody>
             <?php foreach ($products as $key => $value) {
-                if($value['quantity'] >0){
-
+    
                     # code...
-                    echo "<tbody>
-                <tr>
-                <td>" .
-                        $value['name_prod']
-                        .
-                        "</td>
-                <td>" .
-                        $value['name_cat']
-                        .
-                        "</td>
+                    echo "<tbody><tr><td>" .$value['name_prod']."</td>";
+                    echo "<td>" .$value['name_cat']."</td>";
+                    echo "<td>" .$value['unit_price']."</td>";
                 
-                <td>" .
-                        $value['unit_price'] .'€'.
-                        "</td>
-                
-                
-                <td><a class='btn btn-success' href='index.php?action=ajoutPanier&id={$value['id_prod']}'>Ajouter au panier</a>
+                        if($value['quantity'] > 0){
+
+                          echo  "<td><a class='btn btn-success' href='index.php?action=ajoutPanier&id={$value['id_prod']}'>Ajouter au panier</a>";
+                        }else{
+                        
+                           echo "<td><div class='btn btn-danger'>Produit indisponible</div>";
+                        
+                        }
+                        ?>
                 </tr>
-                </tbody>";
-                }
-            } ?>
+                </tbody>
+                
+            <?php } ?>
         </tbody>
     </table>
 </div>

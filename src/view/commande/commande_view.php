@@ -25,7 +25,7 @@ if (isset($_SESSION['user']) && $_SESSION['statut']==1) {
         $information_sur_une_commande = $req->fetchAll();
 		
 		echo '<h1> Voici le détails de la commande N°:<span>' . $information_sur_une_commande[0]['ref_commande'] . '</span></h1>';
-		echo "<table class='table table-dark'> <tr>";
+		echo "<table class='table table-primary table-striped'> <tr>";
 		{    
 			
 			?>
